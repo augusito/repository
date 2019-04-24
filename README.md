@@ -1,9 +1,13 @@
 # Repository
 A  base repository layer built on top of zend-db component
 
-This package is in large part inspired by `Zend\Db` Table Gateways https://zendframework.github.io/zend-db/table-gateway/.
+This package is , in large part, inspired by `Zend\Db` Table Gateways https://zendframework.github.io/zend-db/table-gateway/.
 The major difference between this package and the `Zend\Db\TableGateway` is support 
-for multiple database tables without restrictions as in the case of the latter.
+for multiple database tables without restrictions (`Zend\Db\TableGateway\TableGateway` 
+work with only one table). Also, as opposed to the latter, `BaseRepository` does not define 
+the `ResultSetInterface` at the constructor level. Rather, the `ResultSetInterface`
+is optionally defined at select methods level. The net result of this is a lot of flexibility in 
+deciding if and when to use own result set prototype as well as replace or discard one.
 
 The package contains three classes:
 
@@ -46,7 +50,7 @@ level, that one is able to define `Zend\Db\Sql` objects with multiple tables wit
 
 ### BaseRepository
 This is a concrete class extending the `AbstarctBaseRepository` class by simply adding a 
-sensible constructor. In code, the interface resembles:
+sensible constructor. In code, the class resembles:
 
 ```php
 <?php
@@ -289,7 +293,7 @@ development project. The database contains four tables:
 
 *bugs_products* stores a relationship between bugs and products. This implements a many-to-many relationship, because a given bug may be relevant to multiple products, and of course a given product can have multiple bugs.
 
-The following SQL data definition language pseudocode describes the tables in this example database.
+The following SQL data definition (MySQL) describes the tables in this example database.
 
 ```sql
 
@@ -330,7 +334,12 @@ CREATE TABLE `bugs` (
 -- Dumping data for table `bugs`
 --
 
-INSERT INTO `bugs` VALUES (1,'System needs electricity to run','NEW','2019-04-24 00:00:00','2019-04-24 00:00:00','goofy','mouse','duck'),(2,'Implement Do What I Mean function','VERIFIED','2019-04-25 00:00:00','2019-04-25 00:00:00','goofy','mouse','duck'),(3,'Where are my keys?','FIXED','2019-04-26 00:00:00','2019-04-26 00:00:00','duck','mouse','duck'),(4,'Bug no product','INCOMPLETE','2019-04-27 00:00:00','2019-04-27 00:00:00','mouse','goofy','duck');
+INSERT INTO `bugs` 
+VALUES 
+(1,'System needs electricity to run','NEW','2019-04-24 00:00:00','2019-04-24 00:00:00','goofy','mouse','duck'),
+(2,'Implement Do What I Mean function','VERIFIED','2019-04-25 00:00:00','2019-04-25 00:00:00','goofy','mouse','duck'),
+(3,'Where are my keys?','FIXED','2019-04-26 00:00:00','2019-04-26 00:00:00','duck','mouse','duck'),
+(4,'Bug no product','INCOMPLETE','2019-04-27 00:00:00','2019-04-27 00:00:00','mouse','goofy','duck');
 
 --
 -- Table structure for table `bugs_products`
