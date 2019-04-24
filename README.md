@@ -96,7 +96,7 @@ use Zend\Db\Sql\Sql;
 
 class BaseRepository extends AbstractBaseRepository
 {
-     /** Inherited from AbstractTableGateway */
+     /** Inherited from AbstractBaseRepository */
      /**
      * @var bool
      */
