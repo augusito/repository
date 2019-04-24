@@ -1,0 +1,30 @@
+{
+  "name": "augusito/repository",
+  "description": "A base repository layer built on top of zend-db component",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "keywords": [
+    "repository",
+    "zend-db",
+    "db"
+  ],
+  "authors": [
+    {
+      "name": "Augustus Kamau",
+      "email": "kaugustus15@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^5.6 || ^7.0",
+    "zendframework/zend-db": "^2.10.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Augusito\\Repository\\": "src/"
+    }
+  }
+}
