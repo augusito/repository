@@ -1,14 +1,6 @@
 # Repository
 A  base repository layer built on top of zend-db component
 
-This package is , in large part, inspired by `Zend\Db` Table Gateways https://zendframework.github.io/zend-db/table-gateway/.
-The major difference between this package and the `Zend\Db\TableGateway` is support 
-for multiple database tables without restrictions (`Zend\Db\TableGateway\TableGateway` 
-work with only one table). Also, as opposed to the latter, `BaseRepository` does not define 
-the `ResultSetInterface` at the constructor level. Rather, the `ResultSetInterface`
-is optionally defined at select methods level. The net result of this is a lot of flexibility in 
-deciding if and when to use own result set prototype as well as replace or discard one.
-
 The package contains three classes:
 
 - `BaseRepositoryInterface`, that defines the signatures that must be implemented 
